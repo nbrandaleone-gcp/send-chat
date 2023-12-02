@@ -11,7 +11,7 @@ RUN shards install --production -v
 
 # Build the Crystal binary
 COPY . /opt/
-RUN crystal build --static --release ./src/kemal-redis-chat.cr
+RUN crystal build --static --release ./src/send-chat.cr
 
 # Release image
 FROM alpine:latest
