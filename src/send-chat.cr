@@ -11,8 +11,12 @@ require "json"
 # This program generates phrases for my web based chat program.
 # See: https://github.com/nbrandaleone-gcp/kemal-redis-chat
 #
-# Input: URL
+# Input: <URL>
 # OUTPUT: nonsensical phrases sent to the URL in a loop
+
+# Handle Ctrl+C (SIGTERM) and kill (SIGKILL) signal.
+Signal::INT.trap  { puts "Caught Ctrl+C..."; exit }
+Signal::TERM.trap { puts "Caught kill..."; exit }
 
 # Variables
 url = ""
