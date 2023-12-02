@@ -1,0 +1,1 @@
+curl -X POST http://localhost:3000/msg -H "Content-Type: application/json" -d '{"msg": "This is a test message"}'

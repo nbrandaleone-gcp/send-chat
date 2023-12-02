@@ -1,0 +1,17 @@
+name: send-chat
+version: 0.1.0
+
+authors:
+  - Nick Brandaleone <nbrand@mac.com>
+
+targets:
+  send-msg:
+    main: src/send-chat.cr
+
+dependencies:
+  faker:
+    github: askn/faker
+
+crystal: '>= 1.10.1'
+
+license: MIT
