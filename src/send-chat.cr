@@ -4,6 +4,7 @@ require "faker"
 require "http/client"
 require "uri"
 require "json"
+require "log"
 
 ## Author: Nick Brandaleone nbrand@mac.com
 ## Date: December 2023
@@ -21,7 +22,6 @@ Signal::TERM.trap { puts "Caught kill..."; exit }
 # Variables
 url = ""
 empty_flag = true
-debug = false
 
 # Read the URL from the command line
 OptionParser.parse do |parser|
@@ -34,7 +34,7 @@ OptionParser.parse do |parser|
       empty_flag = false
     end
   end
-  parser.on("-d", "--debug", "Show debugging information") { debug = true }
+  parser.on("-d", "--debug", "Show debugging information") { Log.setup(:debug) }
   parser.on("-h", "--help", "Show this help") do
     puts parser
     exit(0)
@@ -58,7 +58,9 @@ headers = HTTP::Headers{
 # Send HTTP POST with json data
 def send_chat(url, data, headers)
   STDERR.puts data.pretty_inspect.colorize(:dark_gray) # comment out here!
-  HTTP::Client.post(url, body: data.to_json, headers: headers)
+  response = HTTP::Client.post(url, body: data.to_json, headers: headers)
+#  Log.debug { response.status_code }
+  Log.debug { response.body.lines.each { |line| puts line } }
 end
 
 #def get_url

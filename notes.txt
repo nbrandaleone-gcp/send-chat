@@ -1,1 +1,3 @@
 curl -X POST http://localhost:3000/msg -H "Content-Type: application/json" -d '{"msg": "This is a test message"}'
+
+crystal run src/send-chat.cr -- -d -u https://httpbin.org/post
