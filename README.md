@@ -15,10 +15,11 @@ Follow [Crystal](https://crystal-lang.org/install/) installation instuctions.
 ## Usage
 
 ```bash
-send-chat -u http://localhost:3000/msg"
+crystal run src/send-chat.cr -- -u http://localhost:3000/msg
+send-chat -u http://localhost:3000/msg
 ```
 
-Or, if you want to run the command via docker:
+Or, if you prefer a pre-built docker container:
 
 ```bash
 docker run --rm nbrand/send-chat:0.1 -u <URL>
