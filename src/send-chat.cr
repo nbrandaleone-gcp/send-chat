@@ -17,7 +17,7 @@ require "log"
 
 # Handle Ctrl+C (SIGTERM) and kill (SIGKILL) signal.
 Signal::INT.trap  { puts "Caught Ctrl+C..."; exit }
-Signal::TERM.trap { puts "Caught kill..."; exit }
+Signal::TERM.trap { puts "Caught kill...";   exit }
 
 # Variables
 url = ""
@@ -68,15 +68,12 @@ end
 #  print url.colorize(:green)
 #end
 
-r = Random.new
-count = 0
-
-# Main loop. Run 100 times or until user breaks out
+# Main loop. Run until user breaks out
 100.times do
   uri = URI.parse(url)
   phrase = Faker::Hacker.say_something_smart
   data = "[Bot][#{Time.local}] - #{phrase}"
   message = {"msg" => data}
   send_chat(uri, message, headers)
-  sleep(1 + rand(3) + r.rand.round(2)) # sleep 1.second
+  sleep rand * 5           # sleep 1.second
 end

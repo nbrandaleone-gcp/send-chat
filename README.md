@@ -3,8 +3,8 @@
 This programs send a random phrase to a web chat program.
 It was created for testing purposes, to generate useful traffic.
 The phrase is converted into a JSON structure and then sent via
-HTTP POST. The program waits a few seconds and then loops for
-up to 100 iterations.
+HTTP POST. The program waits a few (random) seconds and then loops
+forever, until the user stops the program with SIGINT or SIGTERM.
 
 The chat program source code is on [GitHub](https://github.com/) here: https://github.com/nbrandaleone-gcp/kemal-redis-chat
 
