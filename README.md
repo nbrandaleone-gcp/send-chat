@@ -22,8 +22,14 @@ send-chat -u http://localhost:3000/msg
 Or, if you prefer a pre-built docker container:
 
 ```bash
-docker run --rm nbrand/send-chat:0.1 -u <URL>
+docker run --rm nbrand/send-chat:0.1 -u <URL>/msg
 ```
+
+> [!IMPORTANT]
+> You *MUST* add `/msg` to the end of URL, in order for the chat
+> server to process the incoming messages.  Otherwise, the data
+> hits the main web page of the chat server, and is ignored.
+> 'msg' is a dedicated API endpoint that handles JSON input.
 
 ## Development
 
